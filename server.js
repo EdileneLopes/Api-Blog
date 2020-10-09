@@ -1,4 +1,3 @@
-const { log } = require('console')
 const app = require('./src/app')
 
 const porta = 5001
