@@ -9,7 +9,7 @@ const router = express.Router()
 @access Public 
 @endpoint http://localhost:porta/posts
 **/
-router.get('/posts', blogController.getPost)
+router.get('/posts', blogController.obterPost)
 
 /**
  @route POST post
@@ -17,6 +17,14 @@ router.get('/posts', blogController.getPost)
  @access Public
  @endpoint http://localhost:porta/posts 
  **/
-router.post('/post', blogController.creatPost)
+router.post('/post', blogController.criarPost)
+
+/**
+ @route DELETE post
+ @desc apaga um novo artigo no blog, pelo id
+ @access Public
+ @endpoint http://localhost:porta/posts/:id 
+ **/
+router.delete('/posts/:id', blogController.apagarPost)
 
 module.exports = router

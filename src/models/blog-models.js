@@ -1,4 +1,4 @@
-const { Module } = require('module')
+
 const helper = require('../helpers/helper')
 
 const postsModel = [{
@@ -8,11 +8,12 @@ const postsModel = [{
     conteudo: 'Reprograma lança curso somente para mulheres no\
                 intuito de reduzir o gap de mulheres no setor...',
     etiquetas: ['mulher na tecnologia', 'woman in tech', 'tecnologia']
+    
 },
 
 { 
     id: 2,
-    dataCriacao: '11/10/2020',
+    dataCriacao: helper.novaData(),
     titulo: 'Pessoas e tecnologia',
     conteudo: 'Lidamos mais com pessoas que com ...',
     etiquetas: ['códigos', 'mulher', 'tecnologia', 'pessoas']

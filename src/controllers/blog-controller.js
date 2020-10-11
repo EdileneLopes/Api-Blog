@@ -1,33 +1,48 @@
-const blog = require('../models/blog-models')
+
 const helper = require('../helpers/helper')
 const postsModel = require('../models/blog-models')
 
 
-const getPost = (request, response) => {
-    response.status(200).json(postsModel)
+const obterPost = (requisicao, resposta) => {
+    resposta.status(200).json(postsModel)
 }
 
 
+const criarPost = (requisicao, resposta) => {
+    const { titulo, conteudo, etiquetas } = requisicao.body
 
-
-const creatPost = (request, response) => {
-    const {titulo, conteudo} = request.body
-
-    const newPost = {
+    const novoPost = {
         id: helper.obterNovoId(postsModel),
         dataCriacao: helper.novaData(postsModel),
         titulo: titulo,
-        conteudo: conteudo
-    
+        conteudo: conteudo,
+        etiquetas: etiquetas
+
     }
 
-    postsModel.push(newPost)
+    postsModel.push(novoPost)
 
-    response.status(201).json(newPost)
+    resposta.status(201).json(novoPost)
+}
+
+const apagarPost = (requisicao, resposta) => {
+    const { id } = requisicao.params
+
+    let listaPosts = postsModel.filter(post => {
+        return post.id == id
+        
+    })[0]
+
+    const index = postsModel.indexOf(listaPosts)
+    
+    postsModel.splice(index, 1)
+
+    resposta.json(postsModel)
 }
 
 
 module.exports = {
-    getPost,
-    creatPost
+    obterPost,
+    criarPost,
+    apagarPost
 }

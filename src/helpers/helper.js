@@ -1,9 +1,11 @@
-const obterNovoId = (array) =>{
-    if(array.lenght > 0) {
-        return array[array.lenght - 1] + 1
-    }else{
+const obterNovoId = (array) => {
+    if (array.length > 0) {
+        return array[array.length - 1].id + 1
+    } else {
         return 1
+
     }
+
 }
 
 const novaData = () => new Date().toString()
@@ -13,3 +15,4 @@ module.exports = {
     obterNovoId,
     novaData
 }
+
